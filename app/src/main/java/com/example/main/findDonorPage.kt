@@ -1,27 +1,22 @@
-package com.example.bloodconnect
+package com.example.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.example.main.R
-import com.example.main.com.example.main.ui.theme.ConfirmationActivity
 
-class findDonnoerPage : AppCompatActivity() {
+class findDonorPage : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_donor) // Make sure the XML filename matches
+        setContentView(R.layout.activity_register_donor) // Update with actual layout name
 
-        // Handle "back" button navigation
-        val backText = findViewById<TextView>(R.id.backTextView) // ID of the TextView that says "back"
+        val backText = findViewById<TextView>(R.id.backTextView)
         backText.setOnClickListener {
-            finish() // Closes current activity and goes back
+            finish()
         }
 
-        // Handle form submission (optional)
-        val submitButton = findViewById<Button>(R.id.submitButton) // Add a button in XML with this ID
-
+        val submitButton = findViewById<Button>(R.id.submitButton)
         submitButton.setOnClickListener {
             val weight = findViewById<EditText>(R.id.editWeight).text.toString()
             val address = findViewById<EditText>(R.id.editAddress).text.toString()
@@ -46,7 +41,6 @@ class findDonnoerPage : AppCompatActivity() {
                 tattooGroup.checkedRadioButtonId
             )?.text.toString()
 
-            // Example navigation to ConfirmationActivity with Intent
             val intent = Intent(this, ConfirmationActivity::class.java).apply {
                 putExtra("WEIGHT", weight)
                 putExtra("ADDRESS", address)

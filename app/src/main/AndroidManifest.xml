@@ -16,11 +16,18 @@
             android:name=".registerPage"
             android:exported="false" />
         <activity
-            android:name=".findDonnoerPage"
+            android:name=".findDonorPage"
             android:exported="false" />
         <activity
             android:name=".homepage"
             android:exported="false" />
+        <activity
+            android:name=".ConfirmationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DatabaseHelper"
+            android:exported="false"
+            tools:ignore="Instantiatable" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
