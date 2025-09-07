@@ -253,6 +253,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Enter phone number"
                 android:inputType="phone"
+                android:textColor="@color/black"
                 android:textColorHint="#4B4646" />
 
             <!-- Submit Button -->
