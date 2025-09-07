@@ -13,6 +13,24 @@
         android:theme="@style/Theme.Design.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".ProfilePage"
+            android:exported="false" />
+        <activity
+            android:name=".SellBuy"
+            android:exported="false" />
+        <activity
+            android:name=".Notice"
+            android:exported="false" />
+        <activity
+            android:name=".FindHospital"
+            android:exported="false" />
+        <activity
+            android:name=".viewRequest"
+            android:exported="false" />
+        <activity
+            android:name=".login"
+            android:exported="false" />
+        <activity
             android:name=".registerPage"
             android:exported="false" />
         <activity
@@ -27,12 +45,11 @@
         <activity
             android:name=".DatabaseHelper"
             android:exported="false"
-            tools:ignore="Instantiatable" />
+            tools:ignore="Instantiatable" /> <!-- Launcher Activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.Main">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

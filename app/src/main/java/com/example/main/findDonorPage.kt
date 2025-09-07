@@ -1,58 +1,52 @@
 package com.example.main
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class findDonorPage : AppCompatActivity() {
 
+    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: DonorAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_register_donor) // Update with actual layout name
+        setContentView(R.layout.activity_find_donors)
 
-        val backText = findViewById<TextView>(R.id.backTextView)
-        backText.setOnClickListener {
-            finish()
-        }
+        dbHelper = DatabaseHelper(this)
+        recyclerView = findViewById(R.id.recyclerViewDonors)
+        recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val submitButton = findViewById<Button>(R.id.submitButton)
-        submitButton.setOnClickListener {
-            val weight = findViewById<EditText>(R.id.editWeight).text.toString()
-            val address = findViewById<EditText>(R.id.editAddress).text.toString()
-            val city = findViewById<EditText>(R.id.editCity).text.toString()
-            val state = findViewById<EditText>(R.id.editState).text.toString()
-            val pincode = findViewById<EditText>(R.id.editPincode).text.toString()
-            val phone = findViewById<EditText>(R.id.editPhone).text.toString()
+        val cityDropdown = findViewById<Spinner>(R.id.cityDropdown)
+        val stateDropdown = findViewById<Spinner>(R.id.stateDropdown)
+        val bloodDropdown = findViewById<Spinner>(R.id.bloodDropdown)
+        val btnSearch = findViewById<Button>(R.id.btnSearch)
 
-            val diseaseGroup = findViewById<RadioGroup>(R.id.radioDisease)
-            val allergyGroup = findViewById<RadioGroup>(R.id.radioAllergy)
-            val tattooGroup = findViewById<RadioGroup>(R.id.radioTattoos)
+        // Sample data for dropdowns
+        val cities = listOf("City","Delhi","Mumbai","Bangalore","Hazaribagh","Pune","Kolkata","Ranchi","Jamshedpur")
+        val states = listOf("State","Delhi","Maharashtra","Karnataka","Jharkhand","West Bengal")
+        val bloodGroups = listOf("Blood Group","A+","A-","B+","B-","AB+","AB-","O+","O-")
 
-            val disease = diseaseGroup.findViewById<RadioButton>(
-                diseaseGroup.checkedRadioButtonId
-            )?.text.toString()
+        cityDropdown.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cities)
+        stateDropdown.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, states)
+        bloodDropdown.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, bloodGroups)
 
-            val allergy = allergyGroup.findViewById<RadioButton>(
-                allergyGroup.checkedRadioButtonId
-            )?.text.toString()
+        btnSearch.setOnClickListener {
+            val city = cityDropdown.selectedItem.toString()
+            val state = stateDropdown.selectedItem.toString()
+            val blood = bloodDropdown.selectedItem.toString()
 
-            val tattoos = tattooGroup.findViewById<RadioButton>(
-                tattooGroup.checkedRadioButtonId
-            )?.text.toString()
+            val donors = dbHelper.getDonors(
+                city.takeIf { it.isNotEmpty() },
+                state.takeIf { it.isNotEmpty() },
+                blood.takeIf { it.isNotEmpty() }
+            )
 
-            val intent = Intent(this, ConfirmationActivity::class.java).apply {
-                putExtra("WEIGHT", weight)
-                putExtra("ADDRESS", address)
-                putExtra("CITY", city)
-                putExtra("STATE", state)
-                putExtra("PINCODE", pincode)
-                putExtra("PHONE", phone)
-                putExtra("DISEASE", disease)
-                putExtra("ALLERGY", allergy)
-                putExtra("TATTOOS", tattoos)
-            }
-            startActivity(intent)
+            adapter = DonorAdapter(donors)
+            recyclerView.adapter = adapter
         }
     }
 }

@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#FFFFFF"
-    >
+    android:background="#FFFFFF">
 
+    <!-- Scrollable Form -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
 
             <!-- Header -->
             <LinearLayout
@@ -13,18 +24,16 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp"
-                android:padding="15dp">
+                android:layout_marginBottom="12dp">
 
                 <TextView
                     android:id="@+id/backTextView"
                     android:layout_width="wrap_content"
-                    android:layout_height="24dp"
-                    android:text="back"
+                    android:layout_height="wrap_content"
+                    android:text="Back"
                     android:textColor="#000"
-                    android:textSize="15dp"
+                    android:textSize="15sp"
                     android:contentDescription="Back" />
-
 
                 <ImageView
                     android:layout_width="40dp"
@@ -50,51 +59,55 @@
                 android:text="Register as Donor"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="5dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="Please make sure all the required fields are properly filled."
+                android:textColor="@color/black"
                 android:textSize="14sp"
-                android:paddingLeft="15dp"
+                android:paddingLeft="5dp"
                 android:layout_marginBottom="16dp" />
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp">
+            <!-- Form Fields -->
+            <!-- Weight -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Enter your weight"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
-            <!-- Blood Group and Weight -->
+            <EditText
+                android:id="@+id/editWeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="in KG"
+                android:inputType="number"
+                android:textColorHint="#5D5858"
+                android:textColor="@color/black" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Enter you weight"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    android:textSize="14sp"/>
+                android:orientation="horizontal"
+                android:padding="12dp">
 
-                <EditText
-                    android:id="@+id/editWeight"
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="in KG"
-                    android:textColorHint="#5D5858"
+                    android:text="Blood Group:"
+                    android:textSize="16sp"
                     android:textColor="@color/black"
-                    android:inputType="number"
-                    android:layout_marginStart="8dp" />
+                    android:layout_marginEnd="8dp"/>
+
+                <Spinner
+                    android:id="@+id/spinnerBloodGroup"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:drawable/btn_dropdown" />
             </LinearLayout>
 
             <!-- Address -->
@@ -102,9 +115,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Address"
-                android:textSize="14sp"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="16dp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editAddress"
@@ -153,12 +166,14 @@
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
+                    android:text="Yes"
                     android:textColor="@color/black"
-                    android:buttonTint="@color/black"
-                    android:text="Yes" />
+                    android:buttonTint="@color/black" />
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -166,26 +181,26 @@
                     android:textColor="@color/black"
                     android:buttonTint="@color/black" />
             </RadioGroup>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Do you have any allergy?"
-                android:layout_marginTop="8dp"
+                android:text="Do you have any Allergy?"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
                 android:textSize="14sp" />
-
             <RadioGroup
                 android:id="@+id/radioAllergy"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Yes"
                     android:textColor="@color/black"
                     android:buttonTint="@color/black" />
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -193,26 +208,26 @@
                     android:textColor="@color/black"
                     android:buttonTint="@color/black" />
             </RadioGroup>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Do you have any tattoos?"
+                android:text="Do you have any Tattoos on your body?"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/black"
-                android:layout_marginTop="8dp"
                 android:textSize="14sp" />
-
             <RadioGroup
                 android:id="@+id/radioTattoos"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="Yes"
                     android:textColor="@color/black"
                     android:buttonTint="@color/black" />
+
                 <RadioButton
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
@@ -221,13 +236,15 @@
                     android:buttonTint="@color/black" />
             </RadioGroup>
 
-            <!-- Phone Number -->
+            <!-- More health questions (Allergy, Tattoos) here ... -->
+
+            <!-- Phone -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Phone Number"
-                android:textColor="@color/black"
                 android:layout_marginTop="16dp"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <EditText
@@ -235,25 +252,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Enter phone number"
-                android:textColorHint="#4B4646"
-                android:inputType="phone" />
+                android:inputType="phone"
+                android:textColorHint="#4B4646" />
 
+            <!-- Submit Button -->
             <Button
-                android:layout_width="300dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center"
-                android:textSize="20sp"
-                android:text="REGISTER"
                 android:id="@+id/submitButton"
-                android:backgroundTint="#B31717"
-                android:textColor="@color/black"/>
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:text="REGISTER"
+                android:textSize="18sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#B31717" />
+
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
+    <!-- Bottom Navigation Fixed -->
+    <include
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include
-            layout="@layout/buttom_nav" />
-    </LinearLayout>
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        layout="@layout/buttom_nav" />
+
+</RelativeLayout>

@@ -1,285 +1,277 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
     android:background="#FFFFFF"
-    tools:context=".MainActivity">
+    tools:context=".homepage">
 
-    <LinearLayout
+    <!-- Scrollable Main Content -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:layout_weight="1">
-        <!-- Header -->
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_above="@id/bottom_nav">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
-            <TextView
-                android:id="@+id/appName"
-                android:layout_width="277dp"
-                android:layout_height="wrap_content"
-                android:text="BLOOD CONNECT"
-                android:textColor="#D32F2F"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/notificationIcon"
-                android:layout_width="139dp"
-                android:layout_height="40dp"
-                android:contentDescription="Notification"
-                android:src="@drawable/ic_notif" />
-        </LinearLayout>
-
-        <!-- User Welcome -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="16dp">
-
+            <!-- Header -->
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/appName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="Hey Hans Raj 👋"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"
+                    android:text="BLOOD CONNECT"
+                    android:textColor="#D32F2F"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome back"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#000000" />
+                <!-- Logout Button -->
+
             </LinearLayout>
 
+            <!-- User Welcome -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hey User 👋"
+                        android:textSize="18sp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/wlcm"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome back"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#000000" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/ic_banner"
+                    android:contentDescription="Profile"
+                    android:padding="4dp" />
+            </LinearLayout>
+
+            <!-- Banner -->
             <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/ic_banner"
-                android:contentDescription="Profile"
-                android:padding="4dp" />
+                android:id="@+id/banner"
+                android:layout_width="match_parent"
+                android:layout_height="162dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="Blood Donation Banner"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_big_banner" />
+
+            <!-- Popular Services -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Popular Services"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_marginTop="24dp" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="3"
+                android:layout_marginTop="16dp"
+                android:alignmentMode="alignMargins"
+                android:rowOrderPreserved="false">
+
+                <!-- Register as Donor -->
+                <LinearLayout
+                    android:id="@+id/registerDonner"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_donor"
+                        android:contentDescription="Register as Donor" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Register as Donor"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Find Donors -->
+                <LinearLayout
+                    android:id="@+id/findDonner"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_find_donor"
+                        android:contentDescription="Find Donors" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Find Donors"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- View Requests -->
+                <LinearLayout
+                    android:id="@+id/viewRequests"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_view_requests"
+                        android:contentDescription="View Requests" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="View Requests"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Find Hospitals -->
+                <LinearLayout
+                    android:id="@+id/findHospitals"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/hospital"
+                        android:contentDescription="Find Hospitals" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Find Hospitals"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Important Notices -->
+                <LinearLayout
+                    android:id="@+id/importantNotices"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/notice"
+                        android:contentDescription="Important Notices" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Important Notices"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Sell/Buy Blood -->
+                <LinearLayout
+                    android:id="@+id/sellBuyBlood"
+                    android:layout_width="0dp"
+                    android:layout_columnWeight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/notice"
+                        android:contentDescription="Sell/Buy Blood" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sell/Buy Blood"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+            </GridLayout>
+
         </LinearLayout>
+    </ScrollView>
 
-        <!-- Banner -->
-
-        <!-- Popular Services -->
-
-        <ImageView
-            android:id="@+id/banner"
-            android:layout_width="wrap_content"
-            android:layout_height="162dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="Blood Donation Banner"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ic_big_banner" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Popular Services"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_marginTop="24dp" />
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
-
-        <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="3"
-            android:rowCount="2"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:alignmentMode="alignMargins"
-            android:rowOrderPreserved="false">
-
-            <!-- Register as Donor -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:id="@+id/registerDonner"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_donor"
-                    android:contentDescription="Register as Donor" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Register as Donor"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Find Donors -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:id="@+id/findDonner"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_find_donor"
-                    android:contentDescription="Find Donors" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Find Donors"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- View Requests -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/ic_view_requests"
-                    android:contentDescription="View Requests" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="View Requests"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Find Hospitals -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/hospital"
-                    android:contentDescription="Find Hospitals" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Find Hospitals"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-
-            <!-- Important Notices -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/notice"
-                    android:contentDescription="Important Notices" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Important Notices"
-                    android:textSize="14sp"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/notice"
-                    android:contentDescription="Important Notices" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Sell/Buy Blood"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:layout_marginTop="8dp" />
-            </LinearLayout>
-        </GridLayout>
-        </ScrollView>
-    </LinearLayout>
-
-        <!-- Bottom Navigation (Example Only) -->
-
-
-
-    </LinearLayout>
+    <!-- Bottom Navigation -->
     <include
+        android:id="@+id/bottom_nav"
+        layout="@layout/buttom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        layout="@layout/buttom_nav"/>
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
