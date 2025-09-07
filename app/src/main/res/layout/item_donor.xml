@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    android:padding="16dp"
+    android:layout_margin="8dp"
+    android:elevation="3dp"
+    android:backgroundTint="#FFFFFF"
+    android:background="@drawable/bg_card">
+
+    <!-- Donor Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/bloodGroup"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_red"
+            android:gravity="center"
+            android:text="B-"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp">
+
+            <TextView
+                android:id="@+id/donorName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ravisha"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/donorAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Westyard Colony"
+                android:textSize="14sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Donor Details -->
+    <TextView
+        android:id="@+id/donorDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disease: No\nAllergy: Yes, Dust Allergy\nTattoos: No"
+        android:textSize="14sp"
+        android:layout_marginTop="12dp"
+        android:textColor="#444444" />
+
+    <!-- Send Request Button -->
+    <Button
+        android:id="@+id/btnSendRequest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send Request"
+        android:backgroundTint="#FFFFFF"
+        android:textColor="#D32F2F"
+        android:strokeWidth="10"
+        android:layout_marginTop="12dp" />
+</LinearLayout>
